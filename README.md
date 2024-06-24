@@ -1,6 +1,6 @@
 # React Product Catalog
 
-[DEMO](https://io-med.github.io/phone-catalog/)
+[DEMO](https://io-med.github.io/phone_catalog/)
 
 Phone catalog with shopping cart and favorites page. Based on design:
 
