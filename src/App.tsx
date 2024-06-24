@@ -1,21 +1,36 @@
-import React from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/Header';
+import { Menu } from './components/Menu';
+import { useEffect, useState } from 'react';
+import { Footer } from './components/Footer';
+import { useAppDispatch } from './app/hooks';
+import { initiateFavoritesFromLocal } from './features/favoritesSlice';
+import { initiateCartFromLocal } from './features/cartSlice';
+import classNames from 'classnames';
 
-interface Props {
-  onClick: () => void;
-  children: React.ReactNode;
-}
+export const App = () => {
+  const [menuShown, setMenuShown] = useState(false);
+  const location = useLocation();
+  const dispatch = useAppDispatch();
 
-export const Provider: React.FC<Props> = React.memo(({ onClick, children }) => (
-  <button type="button" onClick={onClick}>
-    {children}
-  </button>
-));
+  useEffect(() => {
+    setMenuShown(false);
+  }, [location]);
 
-export const App: React.FC = () => {
+  useEffect(() => {
+    dispatch(initiateFavoritesFromLocal());
+    dispatch(initiateCartFromLocal());
+  }, []);
+
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>TodoList</Provider>
+    <div className={classNames('page', { 'page--unscrollable': menuShown })}>
+      <Header menuShow={menuShown} setMenuShown={setMenuShown} />
+      {menuShown && <Menu />}
+
+      <Outlet />
+
+      <Footer />
     </div>
   );
 };

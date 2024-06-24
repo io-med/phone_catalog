@@ -1,9 +1,14 @@
-# React TypeScript Starter Pack
+# React Product Catalog
 
-To use this template click `Use this template`
+[DEMO](https://io-med.github.io/react_phone-catalog/)
 
-### Available Scripts
+Phone catalog with shopping cart and favorites page. Based on design:
 
-`Deploy` - available to deploy your application to gh-pages
+- [Figma design](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
 
-`SCSS Preprocessor` - available to write your styles with modern style language
+Technologies:
+
+- React
+- TypeScript
+- Redux with toolkit
+- SCSS with BEM methodology
